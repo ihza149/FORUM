@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\Model;
 use App\forum;
 use Illuminate\Http\Request;
 use Auth;
@@ -25,7 +25,8 @@ class ForumController extends Controller
      */
     public function create()
     {
-        return view('forum.create');
+        $tags = tag::all();
+        return view('forum.create', compact('tags'));
     }
 
     /**
