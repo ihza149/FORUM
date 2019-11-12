@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Database\Eloquent\Model;
 use App\forum;
 use Illuminate\Http\Request;
@@ -70,9 +71,10 @@ class ForumController extends Controller
      * @param  \App\forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function edit(forum $forum)
+    public function edit($id)
     {
-        //
+        $forum = Forum::find($id);
+        return view('forum.edit', compact('forum'));
     }
 
     /**
@@ -82,9 +84,26 @@ class ForumController extends Controller
      * @param  \App\forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, forum $forum)
+    public function update(Request $request, $id)
     {
-        //
+        $forums = Forum::find($id);
+        $forums->user_id = Auth::user()->id;
+        $forums->title =$request->title;
+        $forums->slug =str_slug($request->title);
+        $forums->description = $request->description;
+        if ($request->file('image')){
+            $file = $request->file('image');
+            $filename = time().'.'.$file->getClientOriginalExtension();
+            $location = public_path('/image');
+            $file->move($location, $filename);
+
+            $oldimage = $forums->image;
+            \Storage::delete($oldimage);
+
+            $forums->image = $filename;
+        }
+        $forums->save();
+        return back();
     }
 
     /**
