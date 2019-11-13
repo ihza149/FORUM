@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
 use App\forum;
+use App\Tag;
 use Illuminate\Http\Request;
 use Auth;
 

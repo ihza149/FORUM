@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2019 at 02:34 AM
+-- Generation Time: Nov 13, 2019 at 08:08 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -44,15 +44,16 @@ CREATE TABLE `forums` (
 --
 
 INSERT INTO `forums` (`id`, `user_id`, `title`, `slug`, `description`, `image`, `created_at`, `updated_at`) VALUES
-(1, 2, 'dsvsS', 'dsvss', 'SDVSDVDV', '1573502600.png', '2019-11-11 13:03:20', '2019-11-11 13:03:20');
+(1, 2, 'dsvsS', 'dsvss', 'SDVSDVDV', '1573502600.png', '2019-11-11 13:03:20', '2019-11-11 13:03:20'),
+(2, 2, 'jnhrenh;jerj', 'jnhrenhjerj', 'kehrmpiqerhiq\'er', '1573628291.png', '2019-11-12 23:58:11', '2019-11-12 23:58:11');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `forum_tag`
+-- Table structure for table `forum_tags`
 --
 
-CREATE TABLE `forum_tag` (
+CREATE TABLE `forum_tags` (
   `id` int(10) UNSIGNED NOT NULL,
   `forum_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL
@@ -78,8 +79,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_11_11_173320_create_forums_table', 2),
-(4, '2019_11_12_005400_create_tags_table', 3),
-(5, '2019_11_12_005550_create_forum_tag_table', 3);
+(7, '2019_11_12_103142_create_tags_table', 3),
+(8, '2019_11_12_103440_create_forum_tag_table', 3),
+(9, '2019_11_12_114819_create_tags_table', 4),
+(10, '2019_11_12_115035_create_forum_tags_table', 4);
 
 -- --------------------------------------------------------
 
@@ -106,6 +109,13 @@ CREATE TABLE `tags` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Tari Tradisional', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -141,9 +151,9 @@ ALTER TABLE `forums`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `forum_tag`
+-- Indexes for table `forum_tags`
 --
-ALTER TABLE `forum_tag`
+ALTER TABLE `forum_tags`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -179,25 +189,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `forums`
 --
 ALTER TABLE `forums`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `forum_tag`
+-- AUTO_INCREMENT for table `forum_tags`
 --
-ALTER TABLE `forum_tag`
+ALTER TABLE `forum_tags`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

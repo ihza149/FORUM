@@ -21,7 +21,7 @@
                        <div class="form-group">
                            <select name="tags" class="form-control">@foreach($tags as $tag)
                             <option value="{{$tag->id}}">{{$tag->name}}</option>
-                            @endforach
+                            @endforeach
                            </select>
                        </div>
                        <div class="form-group">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateForumTagTable extends Migration
+class CreateForumTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateForumTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('forum_tag', function (Blueprint $table) {
+        Schema::create('forum_tags', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('forum_id');
             $table->integer('tag_id');
@@ -27,6 +27,6 @@ class CreateForumTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forum_tag');
+        Schema::dropIfExists('forum_tags');
     }
 }
